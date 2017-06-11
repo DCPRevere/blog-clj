@@ -1,0 +1,50 @@
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 640px; /* or 950px */
+}
+
+h1, h2, h3 {
+    font-family: 'Fira Mono', sans-serif;
+    font-weight: bold;
+}
+
+h4, h5, h6 {
+    font-family: 'Fira Mono', sans-serif;
+    font-weight: medium;
+}
+
+p, div {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 18px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 30px;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  background-color: #f5f5f5;
+}
+
+.panel-body.promoted {
+    background: #d6faff;
+}
