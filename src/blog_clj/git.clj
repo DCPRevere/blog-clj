@@ -5,6 +5,8 @@
             [clj-time.periodic :refer [periodic-seq]]
             [clj-jgit.porcelain :as jgit]
             [cheshire.core :as json]
+            ;; [organum.core :as org]
+            [clj-org.org :as org]
             [clojure.string :as str])
   (:import [java.io FileNotFoundException]))
 
@@ -39,7 +41,10 @@
   (.startsWith (.toAbsolutePath (.toPath file))
                (.toAbsolutePath (.toPath dir))))
 
+(defn assoc-id [body]
+  (assoc body :id (org/header-value-for "ID" (:headers body))))
+
 (defn fetch-data []
-  (into #{} (map #(-> % slurp (json/parse-string true))
+  (into #{} (map #(-> % slurp org/parse-org assoc-id)
                  (rest (remove #(is-inside? % (io/as-file (str local-repo "/.git")))
                                (file-seq (io/file local-repo)))))))

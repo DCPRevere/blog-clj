@@ -3,7 +3,6 @@
             [blog-clj.git :as git]))
 
 (defn posts []
-  ;; [{:title "foo" :id "bar"}]
   (git/fetch-data))
 
 (defn get-post [id]
@@ -11,11 +10,11 @@
 
 (defn page [id]
   (let [post (get-post id)
-        {:keys [title body date]} post]
+        {:keys [title body date content]} post]
     [:div
      [:h3 title]
      [:h6 date]
-     [:p body]]))
+     content]))
 
 ;; (defn tags []
 ;;   (sort
