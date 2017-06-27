@@ -5,9 +5,7 @@
             [clj-time.periodic :refer [periodic-seq]]
             [clj-jgit.porcelain :as jgit]
             [cheshire.core :as json]
-            ;; [organum.core :as org]
-            [clj-org.org :as org]
-            [clojure.string :as str])
+            [clj-org.org :as org])
   (:import [java.io FileNotFoundException]))
 
 (def gh-repo "https://github.com/dcprevere/blog.git")
@@ -44,7 +42,15 @@
 (defn assoc-id [body]
   (assoc body :id (org/header-value-for "ID" (:headers body))))
 
+(defn assoc-header [body key]
+  (assoc body key (org/header-value-for (.toUpperCase (name key))
+                                        (:headers body))))
+
 (defn fetch-data []
-  (into #{} (map #(-> % slurp org/parse-org assoc-id)
+  (into #{} (map #(-> %
+                      slurp
+                      org/parse-org
+                      (assoc-header :id)
+                      (assoc-header :date))
                  (rest (remove #(is-inside? % (io/as-file (str local-repo "/.git")))
                                (file-seq (io/file local-repo)))))))
