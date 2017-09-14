@@ -9,3 +9,5 @@ The file must start with three required entries:
 #+ID: event-sourcing-clj
 #+DATE: 2017/09/11
 #+END_SRC
+** Future development
+I will be making the changes necessary for this to be used by other people.
