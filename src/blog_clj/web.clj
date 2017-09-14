@@ -36,7 +36,7 @@
 
 (defn jumbotron []
   [:div.jumbotron.text-center
-   [:h1 "hark@hrwd"]
+   [:h1 [:a {:href "/"} "hark@hrwd"]]
    [:h4 "hrwd's blog"]])
 
 (defn containerise [div]
