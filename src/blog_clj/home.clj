@@ -2,7 +2,7 @@
   (:require [blog-clj.posts :as posts]))
 
 (defn page []
-  (for [post (posts/posts)]
+  (for [post (reverse (sort-by #(:date %) (posts/posts)))]
     (let [{:keys [id title date]} post]
       [:div.panel.panel-default
        [:div.panel-body
