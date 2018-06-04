@@ -1,5 +1,5 @@
 * blog-clj
-=blog-clj= hosts a blog sourced from [[http://orgmode.org/][org]] files a git repository.
+=blog-clj= hosts a blog sourced from [[http://orgmode.org/][org]] files in a git repository.
 ** User experience
 All that is needed to publish a new post is to add an org file to the git repo and push it to a remote repository. The application pulls from the git remote and will then serve it, rendered into HTML.
 ** Required org file structure
